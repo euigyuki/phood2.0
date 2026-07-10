@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhooD — A record of the program, 2024–2026</title>
+  <meta name="description" content="Archive of PhooD, a student-run research seminar series at Brandeis. Organized by Derrick Kim, James, and Zepeng, 2024–2026." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #F1EEE6;
+      --bg-elev: #EAE6DB;
+      --ink: #1B1B1B;
+      --muted: #5F5C55;
+      --rule: #D0CDC3;
+      --accent: #22345C;
+
+      --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+      --sans: "Inter", system-ui, -apple-system, sans-serif;
+
+      --max: 1080px;
+      --pad: clamp(20px, 4vw, 40px);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 120ms ease; }
+    a:hover, a:focus { border-bottom-color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    /* -------- Nav -------- */
+    .nav {
+      padding: 24px 0;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .wordmark {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 24px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      border: none;
+    }
+    .wordmark em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .nav-links a {
+      color: var(--muted);
+      border: none;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    @media (max-width: 560px) {
+      .nav-links { display: none; }
+    }
+
+    /* -------- Hero -------- */
+    .hero {
+      padding: 60px 0 60px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero .kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 24px;
+      max-width: 20ch;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero p.lede {
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 60ch;
+      color: var(--muted);
+      margin: 0 0 48px;
+    }
+
+    /* -------- Stats -------- */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 32px 0 8px;
+      border-top: 1px solid var(--rule);
+    }
+    @media (max-width: 640px) {
+      .stats { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; }
+    }
+    .stat .figure {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat .label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* -------- Section shared -------- */
+    section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+    section:last-of-type { border-bottom: none; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 720px) {
+      .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 32px; }
+    }
+    .section-head .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 12px;
+    }
+    .section-head h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin: 0;
+      max-width: 24ch;
+    }
+    .section-head h2 em { font-style: italic; color: var(--accent); }
+
+    /* -------- About -------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-grid .body {
+      max-width: 62ch;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .about-grid .body p + p { margin-top: 1em; }
+
+    /* Credits inside About */
+    .credits {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px 24px;
+      font-size: 14px;
+    }
+    .credits dt {
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 2px;
+    }
+    .credits dd { margin: 0; color: var(--ink); }
+    @media (max-width: 540px) {
+      .credits { grid-template-columns: 1fr; gap: 4px 0; }
+      .credits dt { margin-top: 12px; }
+    }
+
+    /* -------- Featured visit -------- */
+    .featured-body {
+      max-width: 62ch;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .featured-body > p {
+      margin: 0 0 8px;
+    }
+    .questions-list {
+      list-style: none;
+      padding: 0;
+      margin: 32px 0 32px;
+    }
+    .questions-list li {
+      padding: 22px 0 22px 60px;
+      position: relative;
+      border-top: 1px solid var(--rule);
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .questions-list li:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+    .questions-list li::before {
+      content: attr(data-num);
+      position: absolute;
+      left: 0;
+      top: 24px;
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 720px) {
+      .questions-list li {
+        padding-left: 44px;
+      }
+    }
+    .pdf-link {
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    /* -------- Archive -------- */
+    .archive-controls {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .archive-controls .count { font-variant-numeric: tabular-nums; }
+    .filter {
+      display: flex;
+      gap: 4px;
+    }
+    .filter button {
+      font-family: var(--sans);
+      font-size: 13px;
+      background: none;
+      border: 1px solid transparent;
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+    .filter button:hover { color: var(--ink); }
+    .filter button.active {
+      color: var(--ink);
+      border-color: var(--rule);
+      background: var(--bg-elev);
+    }
+    .filter button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .archive-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .archive-item {
+      display: grid;
+      grid-template-columns: 60px 120px 1fr auto;
+      gap: 24px;
+      align-items: baseline;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .archive-item:last-child { border-bottom: none; }
+    .archive-item .num {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+    .archive-item .date {
+      font-size: 13px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+    .archive-item .title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    .archive-item .title .format-tag {
+      display: block;
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .archive-item .attendance {
+      font-size: 13px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    @media (max-width: 720px) {
+      .archive-item {
+        grid-template-columns: 32px 1fr;
+        gap: 16px;
+      }
+      .archive-item .date { grid-column: 2; }
+      .archive-item .title { grid-column: 2; }
+      .archive-item .attendance { grid-column: 2; color: var(--muted); }
+    }
+
+    /* -------- Footer -------- */
+    footer {
+      padding: 40px 0 60px;
+      border-top: 1px solid var(--rule);
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    footer a { color: var(--muted); border: none; }
+    footer a:hover { color: var(--ink); }
+    footer .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav" aria-label="Primary">
+      <a href="#" class="wordmark">Ph<em>oo</em>D</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#archive">Archive</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="kicker">Brandeis · 2024 – 2026</div>
+      <h1>A student-run seminar, <em>over dinner.</em></h1>
+      <p class="lede">
+        PhooD was a research seminar series for Brandeis PhD students. Graduate students presented in-progress work to peers, occasionally joined by invited external speakers, and shared a meal afterward. It ran for two academic years and twenty-seven events, and continues under a new organizing team.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="figure" id="stat-events">—</div>
+          <div class="label">Events</div>
+        </div>
+        <div class="stat">
+          <div class="figure" id="stat-talks">—</div>
+          <div class="label">Talks presented</div>
+        </div>
+        <div class="stat">
+          <div class="figure" id="stat-years">—</div>
+          <div class="label">Academic years</div>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="section-head">
+        <div class="label">About</div>
+        <h2>The program.</h2>
+      </div>
+      <div class="about-grid">
+        <div></div>
+        <div class="body">
+          <p>PhooD gave PhD students a low-stakes venue to present research to their peers. Each event paired a graduate student talk with a shared meal, typically at a nearby restaurant. Presenters ranged from Brandeis PhD students across CS and computational linguistics to invited external speakers — including Turing Award laureate Leslie Lamport in Spring 2025.</p>
+          <p>The program ran on a semester cadence — six to eight events per term — across two academic years, funded through the department and coordinated with departmental staff. Its purpose was community as much as content: a reliable point on the calendar for cross-cohort exchange that didn't require a conference deadline to justify the time.</p>
+          <p>This archive covers PhooD 2.0. The series was founded as PhooD 1.0 under Jack and continues today as PhooD 3.0 under Tim Obiso and Yifan Zhu.</p>
+
+          <dl class="credits">
+            <dt>Organized by</dt>
+            <dd>Derrick Kim, James Petullo, and Zepeng Hu (PhooD 2.0)</dd>
+
+            <dt>Format</dt>
+            <dd>Student research talks with dinner; six to eight events per semester</dd>
+
+            <dt>Ran from</dt>
+            <dd>September 2024 – May 2026</dd>
+
+            <dt>Continued by</dt>
+            <dd>Tim Obiso and Yifan Zhu (PhooD 3.0)</dd>
+
+            <dt>Funded by</dt>
+            <dd>Michtom School of Computer Science, Brandeis University</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="section-head">
+        <div class="label">Featured visit</div>
+        <h2>Leslie Lamport, <em>Spring 2025.</em></h2>
+      </div>
+      <div class="about-grid">
+        <div></div>
+        <div class="featured-body">
+          <p>On April 9, 2025, Turing Award laureate Leslie Lamport joined PhooD for an extended Q&amp;A over Boston Kebab. We prepared seventeen questions spanning formal methods, mathematical education, systems research, and the practice of thinking and writing about computer science. A few examples from the list:</p>
+
+          <ol class="questions-list">
+            <li data-num="01">How might formal methods (and TLA+ in particular) be applied or adapted to help ensure correctness, reliability, or even fairness in large-scale AI pipelines, given the probabilistic and often opaque nature of current AI-driven approaches?</li>
+            <li data-num="04">You've said that the mathematical education in this country is pretty terrible, and that many people, including senior programmers, are afraid of mathematics. What should we do differently, and how do you think we should teach people to think more mathematically?</li>
+            <li data-num="14">You've said "Coding requires Thinking" and "Thinking requires writing." What separates a productive writing process from a non-productive writing process?</li>
+          </ol>
+
+          <p class="pdf-link"><a href="lamport-questions.pdf">Read the full set of questions we prepared &rarr;</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="archive">
+      <div class="section-head">
+        <div class="label">Archive</div>
+        <h2>Every event, <em>in order.</em></h2>
+      </div>
+
+      <div class="archive-controls">
+        <div class="filter" role="group" aria-label="Filter events by academic year">
+          <button data-year="all" class="active" aria-pressed="true">All</button>
+          <button data-year="2025" aria-pressed="false">2025–26</button>
+          <button data-year="2024" aria-pressed="false">2024–25</button>
+        </div>
+        <div class="count" id="archive-count"></div>
+      </div>
+
+      <ol class="archive-list" id="archive-list"></ol>
+    </section>
+
+    <footer>
+      <div>PhooD · An archive · <span id="year"></span></div>
+      <div class="footer-links">
+        <a href="mailto:egk265@brandeis.edu">egk265@brandeis.edu</a>
+        <a href="https://orcid.org/0009-0004-9697-7058">ORCID</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ============================================================
+    // Event data — reverse chronological (newest first).
+    //
+    // Fields:
+    //   date: "YYYY-MM-DD"
+    //   speaker: presenter name (or "Semester kickoff" for openers)
+    //   restaurant: where food was ordered from (empty string ok)
+    //   attendance: number, or null if not recorded
+    // ============================================================
+
+    const EVENTS = [
+      // Spring 2026
+      { date: "2026-05-06", speaker: "Bohan Jiang",              restaurant: "",                  attendance: "~10" },
+      { date: "2026-04-29", speaker: "Yifei Wang",               restaurant: "",                  attendance: "~10" },
+      { date: "2026-04-15", speaker: "John Langton",             restaurant: "",                  attendance: "~10" },
+      { date: "2026-03-18", speaker: "Jack Garbus",              restaurant: "",                  attendance: "~10" },
+      { date: "2026-03-04", speaker: "Tim Obiso",                restaurant: "",                  attendance: "~10" },
+      { date: "2026-01-21", speaker: "Derrick Kim",              restaurant: "",                  attendance: "~10" },
+
+      // Fall 2025
+      { date: "2025-12-03", speaker: "Bingyang Ye",              restaurant: "Mulan",             attendance: 13 },
+      { date: "2025-11-12", speaker: "Kenneth Lai",              restaurant: "Taqueria El Amigo", attendance: 12 },
+      { date: "2025-10-22", speaker: "Jin Zhao",                 restaurant: "Mulan",             attendance: 12 },
+      { date: "2025-10-08", speaker: "James Petullo",            restaurant: "Mulan",             attendance: 10 },
+      { date: "2025-09-17", speaker: "Yangyang Chen",            restaurant: "Taqueria Mariana",  attendance: 10 },
+      { date: "2025-09-10", speaker: "Semester kickoff",         restaurant: "Mulan",             attendance: 10 },
+
+      // Spring 2025
+      { date: "2025-05-07", speaker: "Xinyi Ni",                 restaurant: "Taqueria El Amigo", attendance: 11 },
+      { date: "2025-04-23", speaker: "Nikhil Krishnaswamy",      restaurant: "Mulan",             attendance: 15 },
+      { date: "2025-04-09", speaker: "Leslie Lamport",           restaurant: "Boston Kebab",      attendance: 15 },
+      { date: "2025-03-26", speaker: "Bert Xue",                 restaurant: "Mulan",             attendance: 20 },
+      { date: "2025-03-12", speaker: "Jonne Saleva",             restaurant: "Boston Kebab",      attendance: 16 },
+      { date: "2025-02-26", speaker: "Hongrui Wu",               restaurant: "Mulan",             attendance: 16 },
+      { date: "2025-02-14", speaker: "Jack Garbus",              restaurant: "Chipotle",          attendance: 13 },
+      { date: "2025-01-22", speaker: "Frank Liu (Notre Dame)",   restaurant: "Mulan",             attendance: 16 },
+
+      // Fall 2024
+      { date: "2024-12-11", speaker: "Chester Palen-Michel",     restaurant: "Taqueria El Amigo", attendance: null },
+      { date: "2024-11-20", speaker: "Jin Zhao",                 restaurant: "Mulan",             attendance: null },
+      { date: "2024-11-13", speaker: "James Petullo",            restaurant: "Domenic's",         attendance: null },
+      { date: "2024-10-30", speaker: "Nick Moran",               restaurant: "Domenic's",         attendance: null },
+      { date: "2024-10-23", speaker: "Derrick Kim",              restaurant: "Bonchon",           attendance: null },
+      { date: "2024-10-03", speaker: "Peizhao Li",               restaurant: "Mulan",             attendance: null },
+      { date: "2024-09-18", speaker: "Semester kickoff",         restaurant: "Mulan",             attendance: null },
+    ];
+
+    // ------------------------------------------------------------
+    // Rendering — no editing needed below this line.
+    // ------------------------------------------------------------
+
+    const monthShort = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+    function fmtDate(iso) {
+      const [y, m, d] = iso.split("-").map(Number);
+      return `${monthShort[m-1]} ${d}, ${y}`;
+    }
+
+    // Academic year bucket: Sep–Aug. e.g. Sep 2023 – Aug 2024 = "2023"
+    function academicYear(iso) {
+      const [y, m] = iso.split("-").map(Number);
+      return (m >= 9) ? String(y) : String(y - 1);
+    }
+
+    function renderStats() {
+      const talks = EVENTS.filter(e => e.speaker && !/kickoff/i.test(e.speaker)).length;
+      document.getElementById("stat-events").textContent = EVENTS.length;
+      document.getElementById("stat-talks").textContent = talks;
+      document.getElementById("stat-years").textContent = "2";
+    }
+
+    function renderArchive(filter = "all") {
+      const list = document.getElementById("archive-list");
+      const filtered = EVENTS.filter(e => filter === "all" || academicYear(e.date) === filter);
+      list.innerHTML = filtered.map((e) => {
+        const num = String(EVENTS.length - EVENTS.indexOf(e)).padStart(2, "0");
+        const restaurantTag = e.restaurant ? `<span class="format-tag">${e.restaurant}</span>` : "";
+        const att = e.attendance ? `${e.attendance} attended` : "";
+        return `
+          <li class="archive-item">
+            <span class="num">${num}</span>
+            <span class="date">${fmtDate(e.date)}</span>
+            <span class="title">${e.speaker}${restaurantTag}</span>
+            <span class="attendance">${att}</span>
+          </li>
+        `;
+      }).join("");
+      document.getElementById("archive-count").textContent =
+        `${filtered.length} event${filtered.length === 1 ? "" : "s"}`;
+    }
+
+    function setupFilters() {
+      const buttons = document.querySelectorAll(".filter button");
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          buttons.forEach(b => {
+            b.classList.remove("active");
+            b.setAttribute("aria-pressed", "false");
+          });
+          btn.classList.add("active");
+          btn.setAttribute("aria-pressed", "true");
+          renderArchive(btn.dataset.year);
+        });
+      });
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderStats();
+    renderArchive();
+    setupFilters();
+  </script>
+</body>
+</html>
