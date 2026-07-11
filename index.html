@@ -306,6 +306,53 @@
       letter-spacing: 0.02em;
     }
 
+    /* -------- Highlights (photo gallery) -------- */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 32px;
+      margin-top: 8px;
+    }
+    @media (max-width: 640px) {
+      .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+    .highlights-grid figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .highlights-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .highlights-grid figcaption {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding-top: 2px;
+    }
+    .highlights-grid figcaption .speaker {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.2;
+    }
+    .highlights-grid figcaption .date {
+      color: var(--muted);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+
     /* -------- Archive -------- */
     .archive-controls {
       display: flex;
@@ -528,6 +575,43 @@
             <figure><img src="photos/photo-4.jpg" alt="A PhooD talk in progress at Volen 101" loading="lazy"></figure>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="highlights">
+      <div class="section-head">
+        <div class="label">Photos</div>
+        <h2>In the room.</h2>
+      </div>
+      <div class="highlights-grid">
+        <figure>
+          <img src="photos/tim-obiso.jpg" alt="Tim Obiso presenting on mechanistic interpretability, PhooD, March 2026" loading="lazy" />
+          <figcaption>
+            <span class="speaker">Tim Obiso</span>
+            <span class="date">March 4, 2026</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="photos/kenneth-lai.jpg" alt="Kenneth Lai presenting on situated multimodal dialogue, PhooD, November 2025" loading="lazy" />
+          <figcaption>
+            <span class="speaker">Kenneth Lai</span>
+            <span class="date">November 12, 2025</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="photos/jin-zhao.jpg" alt="Jin Zhao presenting on contrastive framing in news narratives, PhooD, October 2025" loading="lazy" />
+          <figcaption>
+            <span class="speaker">Jin Zhao</span>
+            <span class="date">October 22, 2025</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="photos/xinyi-ni.jpg" alt="Xinyi Ni reflecting on the PhD journey, PhooD, May 2025" loading="lazy" />
+          <figcaption>
+            <span class="speaker">Xinyi Ni</span>
+            <span class="date">May 7, 2025</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
