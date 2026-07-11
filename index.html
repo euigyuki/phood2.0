@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PhooD — A record of the program, 2024–2026</title>
-  <meta name="description" content="Archive of PhooD, a student-run research seminar series at Brandeis. Organized by Derrick Kim, James, and Zepeng, 2024–2026." />
+  <meta name="description" content="Archive of PhooD, a student-run research seminar series at Brandeis. Organized by Derrick Kim, James Petullo, Zepeng Hu, and Yifei Wang, 2024–2026." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -271,6 +271,41 @@
       font-size: 15px;
     }
 
+    /* -------- Gallery -------- */
+    .gallery-body {
+      max-width: none;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 0;
+    }
+    @media (max-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .gallery-grid figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+    .gallery-grid figcaption {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+
     /* -------- Archive -------- */
     .archive-controls {
       display: flex;
@@ -341,12 +376,24 @@
       font-weight: 400;
       line-height: 1.3;
     }
-    .archive-item .title .format-tag {
+    .archive-item .title .talk-title {
+      display: block;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.35;
+      color: var(--ink);
+      margin-top: 4px;
+      max-width: 62ch;
+    }
+    .archive-item .title .abstract {
       display: block;
       font-family: var(--sans);
-      font-size: 13px;
+      font-size: 14px;
+      line-height: 1.5;
       color: var(--muted);
-      margin-top: 2px;
+      margin-top: 6px;
+      max-width: 60ch;
     }
     .archive-item .attendance {
       font-size: 13px;
@@ -392,7 +439,7 @@
 
     <header class="hero">
       <div class="kicker">Brandeis · 2024 – 2026</div>
-      <h1>A student-run seminar, <em>over dinner.</em></h1>
+      <h1>PhooD Research Seminar.</h1>
       <p class="lede">
         PhooD was a research seminar series for Brandeis PhD students. Graduate students presented in-progress work to peers, occasionally joined by invited external speakers, and shared a meal afterward. It ran for two academic years and twenty-seven events, and continues under a new organizing team.
       </p>
@@ -421,13 +468,13 @@
       <div class="about-grid">
         <div></div>
         <div class="body">
-          <p>PhooD gave PhD students a low-stakes venue to present research to their peers. Each event paired a graduate student talk with a shared meal, typically at a nearby restaurant. Presenters ranged from Brandeis PhD students across CS and computational linguistics to invited external speakers — including Turing Award laureate Leslie Lamport in Spring 2025.</p>
+          <p>PhooD gave PhD students a low-stakes venue to present research to their peers. Each event paired a graduate student talk with a shared meal, typically at a nearby restaurant. Presenters ranged from Brandeis PhD students across CS and computational linguistics to invited external speakers — including Brandeis alumnus and Turing Award laureate Leslie Lamport in Spring 2025.</p>
           <p>The program ran on a semester cadence — six to eight events per term — across two academic years, funded through the department and coordinated with departmental staff. Its purpose was community as much as content: a reliable point on the calendar for cross-cohort exchange that didn't require a conference deadline to justify the time.</p>
           <p>This archive covers PhooD 2.0. The series was founded as PhooD 1.0 under Jack and continues today as PhooD 3.0 under Tim Obiso and Yifan Zhu.</p>
 
           <dl class="credits">
             <dt>Organized by</dt>
-            <dd>Derrick Kim, James Petullo, and Zepeng Hu (PhooD 2.0)</dd>
+            <dd>Derrick Kim, James Petullo, Zepeng Hu (2026), and Yifei Wang (2025) — PhooD 2.0</dd>
 
             <dt>Format</dt>
             <dd>Student research talks with dinner; six to eight events per semester</dd>
@@ -453,7 +500,7 @@
       <div class="about-grid">
         <div></div>
         <div class="featured-body">
-          <p>On April 9, 2025, Turing Award laureate Leslie Lamport joined PhooD for an extended Q&amp;A over Boston Kebab. We prepared seventeen questions spanning formal methods, mathematical education, systems research, and the practice of thinking and writing about computer science. A few examples from the list:</p>
+          <p>On April 9, 2025, Leslie Lamport — Turing Award laureate and Brandeis PhD alumnus (Mathematics, 1972) — joined PhooD for an extended Q&amp;A over Boston Kebab. We prepared seventeen questions spanning formal methods, mathematical education, systems research, and the practice of thinking and writing about computer science. A few examples from the list:</p>
 
           <ol class="questions-list">
             <li data-num="01">How might formal methods (and TLA+ in particular) be applied or adapted to help ensure correctness, reliability, or even fairness in large-scale AI pipelines, given the probabilistic and often opaque nature of current AI-driven approaches?</li>
@@ -462,6 +509,24 @@
           </ol>
 
           <p class="pdf-link"><a href="lamport-questions.pdf">Read the full set of questions we prepared &rarr;</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="moments">
+      <div class="section-head">
+        <div class="label">Moments</div>
+        <h2>Around <em>the room.</em></h2>
+      </div>
+      <div class="about-grid">
+        <div></div>
+        <div class="gallery-body">
+          <div class="gallery-grid">
+            <figure><img src="photos/photo-1.jpg" alt="A PhooD talk in progress at Volen 101" loading="lazy"></figure>
+            <figure><img src="photos/photo-2.jpg" alt="A PhooD talk in progress at Volen 101" loading="lazy"></figure>
+            <figure><img src="photos/photo-3.jpg" alt="A PhooD talk in progress at Volen 101" loading="lazy"></figure>
+            <figure><img src="photos/photo-4.jpg" alt="A PhooD talk in progress at Volen 101" loading="lazy"></figure>
+          </div>
         </div>
       </div>
     </section>
@@ -500,45 +565,178 @@
     // Fields:
     //   date: "YYYY-MM-DD"
     //   speaker: presenter name (or "Semester kickoff" for openers)
-    //   restaurant: where food was ordered from (empty string ok)
-    //   attendance: number, or null if not recorded
+    //   title: talk title (empty string ok)
+    //   abstract: a sentence or two summarizing the talk (empty ok)
+    //   attendance: number, "~N" for a ballpark estimate, or null
     // ============================================================
 
     const EVENTS = [
       // Spring 2026
-      { date: "2026-05-06", speaker: "Bohan Jiang",              restaurant: "",                  attendance: "~10" },
-      { date: "2026-04-29", speaker: "Yifei Wang",               restaurant: "",                  attendance: "~10" },
-      { date: "2026-04-15", speaker: "John Langton",             restaurant: "",                  attendance: "~10" },
-      { date: "2026-03-18", speaker: "Jack Garbus",              restaurant: "",                  attendance: "~10" },
-      { date: "2026-03-04", speaker: "Tim Obiso",                restaurant: "",                  attendance: "~10" },
-      { date: "2026-01-21", speaker: "Derrick Kim",              restaurant: "",                  attendance: "~10" },
+      { date: "2026-05-06", speaker: "Bohan Jiang",    title: "Long Video Understanding", abstract: "", attendance: "~10" },
+      { date: "2026-04-29", speaker: "Yifei Wang (Biogen)", title: "AI4Science Research in Biotech Industry", abstract: `An alumna and former PhooD 2.0 organizer, now a Machine Learning Scientist at Biogen.`, attendance: "~10" },
+      {
+        date: "2026-04-15",
+        speaker: "John Langton (Dermatic Health)",
+        title: "",
+        abstract: `A returning Brandeis CS PhD alumnus from Prof. Tim Hickey's group, now CTO and Co-founder of Dermatic Health. His work spans AI, healthcare, and cybersecurity.`,
+        attendance: "~10"
+      },
+      {
+        date: "2026-03-18",
+        speaker: "Jack Garbus (AMD)",
+        title: "AI Compilers for NPUs @ AMD",
+        abstract: `A short, informal overview of AMD's RyzenAI NPU and the problems the compiler solves, followed by a general Q&A.`,
+        attendance: "~10"
+      },
+      {
+        date: "2026-03-04",
+        speaker: "Tim Obiso",
+        title: "Mechanistic Interpretability of Deception and Meaning in LLMs",
+        abstract: `Mechanistic interpretability experiments across two domains: social deduction games — using probing, SAEs, and steering to investigate how models represent deception and theory of mind — and Generative Lexicon-inspired experiments testing whether models construct novel word meaning along the qualia roles GL predicts. The connecting thread is whether models' internal representations align with the structures that linguistic and cognitive theories propose.`,
+        attendance: "~10"
+      },
+      {
+        date: "2026-01-21",
+        speaker: "Derrick Kim",
+        title: "A VR Implementation of DPIP",
+        abstract: `An early-stage talk on extending the Distributed Partial Information Puzzle (DPIP) — a collaborative construction task from Prof. Pustejovsky's lab that studies how people establish common ground under partial information — into an immersive VR setting.`,
+        attendance: "~10"
+      },
 
       // Fall 2025
-      { date: "2025-12-03", speaker: "Bingyang Ye",              restaurant: "Mulan",             attendance: 13 },
-      { date: "2025-11-12", speaker: "Kenneth Lai",              restaurant: "Taqueria El Amigo", attendance: 12 },
-      { date: "2025-10-22", speaker: "Jin Zhao",                 restaurant: "Mulan",             attendance: 12 },
-      { date: "2025-10-08", speaker: "James Petullo",            restaurant: "Mulan",             attendance: 10 },
-      { date: "2025-09-17", speaker: "Yangyang Chen",            restaurant: "Taqueria Mariana",  attendance: 10 },
-      { date: "2025-09-10", speaker: "Semester kickoff",         restaurant: "Mulan",             attendance: 10 },
+      {
+        date: "2025-12-03",
+        speaker: "Bingyang Ye",
+        title: "Enhanced Noun-Noun Compound Interpretation through Textual Enrichment",
+        abstract: `A dual textual-enrichment framework that improves noun-noun compound interpretation by paraphrasing relations into event-based descriptions and adding condition cues to disambiguate polysemous compounds. Across three LLM families, the approach boosts accuracy — showing that making latent compositional structure and contextual constraints explicit helps models achieve deeper semantic understanding.`,
+        attendance: 13
+      },
+      {
+        date: "2025-11-12",
+        speaker: "Kenneth Lai",
+        title: "A Model of Information State in Situated Multimodal Dialogue",
+        abstract: `An examination of how speech, gesture, and task-related actions work together to build shared understanding in multimodal dialogue, using AMR-annotated interaction data to show what current annotations capture and where they fall short.`,
+        attendance: 12
+      },
+      {
+        date: "2025-10-22",
+        speaker: "Jin Zhao",
+        title: "",
+        abstract: `An exploration of contrastive framing: how news outlets narrate the same event in strikingly different ways. Presents computational methods and datasets that reveal these narrative contrasts, and demos an interactive website showing how event descriptions and causal explanations diverge across media sources.`,
+        attendance: 12
+      },
+      { date: "2025-10-08", speaker: "James Petullo", title: "VectorCISC: Improving Confidence-Informed Self-Consistency with Reasoning Trace Clustering and Candidate Answer Selection", abstract: "", attendance: 10 },
+      {
+        date: "2025-09-17",
+        speaker: "Yangyang Chen",
+        title: "Toward Better Discoverability: Archival-Scale Spoken Language Identification for Low-Resource Languages",
+        abstract: `Large audiovisual archives such as the American Archive of Public Broadcasting (AAPB) face substantial challenges achieving accessibility for multilingual items, especially when those items include low-resource languages like Samoan, Yup'ik, Haitian Creole, and various indigenous languages. While recent advances in AI, particularly LLMs, have significantly improved processing for high-resource languages like English, data scarcity and inconsistent documentation continue to cause struggles for automated processing of low-resource languages. Within the AAPB, tens of thousands of multilingual items lack metadata about which languages they contain, limiting their accessibility to archivists, scholars, and speakers seeking cultural and historical narratives. This short presentation describes a recently begun project on language ID for low-resource languages: the imperative and challenge of documenting the languages spoken in AAPB materials, a review of recent research on spoken LRL processing, and a proposed strategy for integrating language identification into existing archival workflows.`,
+        attendance: 10
+      },
+      { date: "2025-09-10", speaker: "Semester kickoff", title: "", abstract: `First PhooD of the academic year. New PhD students were introduced, and the department chair joined to welcome them.`, attendance: 10 },
 
       // Spring 2025
-      { date: "2025-05-07", speaker: "Xinyi Ni",                 restaurant: "Taqueria El Amigo", attendance: 11 },
-      { date: "2025-04-23", speaker: "Nikhil Krishnaswamy",      restaurant: "Mulan",             attendance: 15 },
-      { date: "2025-04-09", speaker: "Leslie Lamport",           restaurant: "Boston Kebab",      attendance: 15 },
-      { date: "2025-03-26", speaker: "Bert Xue",                 restaurant: "Mulan",             attendance: 20 },
-      { date: "2025-03-12", speaker: "Jonne Saleva",             restaurant: "Boston Kebab",      attendance: 16 },
-      { date: "2025-02-26", speaker: "Hongrui Wu",               restaurant: "Mulan",             attendance: 16 },
-      { date: "2025-02-14", speaker: "Jack Garbus",              restaurant: "Chipotle",          attendance: 13 },
-      { date: "2025-01-22", speaker: "Frank Liu (Notre Dame)",   restaurant: "Mulan",             attendance: 16 },
+      {
+        date: "2025-05-07",
+        speaker: "Xinyi Ni",
+        title: "",
+        abstract: `Reflections on the personal and academic challenges of the PhD journey — staying motivated, managing time, balancing growth with research demands — and the mindset shifts and practical strategies that helped in navigating them. Offered in the hope of providing insight and inspiration for others on similar paths.`,
+        attendance: 11
+      },
+      {
+        date: "2025-04-23",
+        speaker: "Nikhil Krishnaswamy (Colorado State)",
+        title: "",
+        abstract: `His journey from game development to AI through the lens of computational linguistics: how he found his way into research, what led him to pursue an academic path, and — nearing the end of his own tenure track — the realities of that path, particularly around securing research funding.`,
+        attendance: 15
+      },
+      {
+        date: "2025-04-09",
+        speaker: "Leslie Lamport",
+        title: "",
+        abstract: `A returning Brandeis alumnus (PhD in Mathematics, 1972) and recipient of the 2013 Turing Award — computer science's highest honor — for fundamental contributions to distributed and concurrent systems.`,
+        attendance: 15
+      },
+      {
+        date: "2025-03-26",
+        speaker: "Nianwen (Bert) Xue",
+        title: "",
+        abstract: `A round-robin discussion with the then Chair of Brandeis CS on the research retreat and directions to improve the department. Prof. James Pustejovsky also joined. Participation was optional.`,
+        attendance: 20
+      },
+      {
+        date: "2025-03-12",
+        speaker: "Jonne Saleva",
+        title: "REUBEN: REsampling-based Uncertainty Bounds for Evaluating NLP",
+        abstract: `Suppose you run an NLP benchmark and your model comes in second, scoring just below the top model but well above others. How do you know if these results are "real"? Will they hold under replications of the same experiment or on other benchmarks? This talk explores those questions through the lens of resampling-based statistical inference, and shows how experimental variation can be broken down into variance components that quantify uncertainty related to the model, individual datasets, and entire benchmarks. Also covers how hierarchical bootstrap sampling can be used to quantify uncertainty in downstream quantities of interest such as aggregate performance measures and leaderboard rankings.`,
+        attendance: 16
+      },
+      {
+        date: "2025-02-26",
+        speaker: "Hongrui Wu",
+        title: "LLMs for Sentiment Analysis in Financial Trading",
+        abstract: `Investor sentiment significantly impacts financial markets, yet real-time sentiment extraction remains challenging. Traditional NLP-based tools often fall short in capturing actionable insights from financial news and social media. Large language models offer a promising path by enabling precise sentiment analysis and dynamic market tracking. This talk explores the development of sentiment analysis in trading and how LLMs enhance its effectiveness for better-informed financial decisions.`,
+        attendance: 16
+      },
+      {
+        date: "2025-02-14",
+        speaker: "Jack Garbus",
+        title: "R1 — Memory Usage, RL, and Discussion",
+        abstract: `On DeepSeek's reinforcement learning algorithm, hardware, and the training tricks used to produce R1 at the reported cost.`,
+        attendance: 13
+      },
+      {
+        date: "2025-01-22",
+        speaker: "Zheyuan (Frank) Liu (Notre Dame)",
+        title: "",
+        abstract: `A returning Brandeis alumnus, now a CS PhD student at Notre Dame under Prof. Meng Jiang. His research spans GenAI (MLLM/LLM) safety, AI privacy, trustworthy AI, machine unlearning, and LLM security.`,
+        attendance: 16
+      },
 
       // Fall 2024
-      { date: "2024-12-11", speaker: "Chester Palen-Michel",     restaurant: "Taqueria El Amigo", attendance: null },
-      { date: "2024-11-20", speaker: "Jin Zhao",                 restaurant: "Mulan",             attendance: null },
-      { date: "2024-11-13", speaker: "James Petullo",            restaurant: "Domenic's",         attendance: null },
-      { date: "2024-10-30", speaker: "Nick Moran",               restaurant: "Domenic's",         attendance: null },
-      { date: "2024-10-23", speaker: "Derrick Kim",              restaurant: "Bonchon",           attendance: null },
-      { date: "2024-10-03", speaker: "Peizhao Li",               restaurant: "Mulan",             attendance: null },
-      { date: "2024-09-18", speaker: "Semester kickoff",         restaurant: "Mulan",             attendance: null },
+      {
+        date: "2024-12-11",
+        speaker: "Chester Palen-Michel",
+        title: "",
+        abstract: `On automatic summarization and named entity recognition in low-resource languages, working with Prof. Constantine Lignos.`,
+        attendance: null
+      },
+      {
+        date: "2024-11-20",
+        speaker: "Jin Zhao",
+        title: "",
+        abstract: `A method integrating event extraction, Cross-Document Event Coreference (CDEC), and causal relationships among events to identify framing devices used by the media.`,
+        attendance: null
+      },
+      {
+        date: "2024-11-13",
+        speaker: "James Petullo",
+        title: "",
+        abstract: `Presented in his second year as a PhD student advised by Prof. Olga Papaemmanouil and Prof. Sarkar: intelligent multi-component database optimization using fully-coordinated database optimizer components trained with multi-agent reinforcement learning.`,
+        attendance: null
+      },
+      {
+        date: "2024-10-30",
+        speaker: "Nick Moran",
+        title: "",
+        abstract: `A returning alumnus from Prof. Pollack's lab, now a Machine Learning Research Scientist at Analog Devices. Prof. Pollack also attended.`,
+        attendance: null
+      },
+      {
+        date: "2024-10-23",
+        speaker: "Derrick Kim",
+        title: "",
+        abstract: `On AI mental models versus human mental models, and related annotation tasks.`,
+        attendance: null
+      },
+      {
+        date: "2024-10-03",
+        speaker: "Peizhao Li",
+        title: "",
+        abstract: `An informal Q&A with returning alumnus Peizhao Li (PhD Brandeis 2024, advised by Prof. Hongfu Liu), now a Research Scientist at Google. His research spans Responsible AI, Multimodal Learning, and Computer Vision — recognized by a CVPR 2024 Best Paper Award.`,
+        attendance: null
+      },
+      { date: "2024-09-18", speaker: "Semester kickoff", title: "", abstract: `First PhooD of the academic year. New PhD students were introduced, and the department chair joined to welcome them.`, attendance: null },
     ];
 
     // ------------------------------------------------------------
@@ -570,13 +768,14 @@
       const filtered = EVENTS.filter(e => filter === "all" || academicYear(e.date) === filter);
       list.innerHTML = filtered.map((e) => {
         const num = String(EVENTS.length - EVENTS.indexOf(e)).padStart(2, "0");
-        const restaurantTag = e.restaurant ? `<span class="format-tag">${e.restaurant}</span>` : "";
+        const titleTag = e.title ? `<span class="talk-title">${e.title}</span>` : "";
+        const abstractTag = e.abstract ? `<span class="abstract">${e.abstract}</span>` : "";
         const att = e.attendance ? `${e.attendance} attended` : "";
         return `
           <li class="archive-item">
             <span class="num">${num}</span>
             <span class="date">${fmtDate(e.date)}</span>
-            <span class="title">${e.speaker}${restaurantTag}</span>
+            <span class="title">${e.speaker}${titleTag}${abstractTag}</span>
             <span class="attendance">${att}</span>
           </li>
         `;
