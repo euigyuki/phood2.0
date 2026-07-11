@@ -271,41 +271,6 @@
       font-size: 15px;
     }
 
-    /* -------- Gallery -------- */
-    .gallery-body {
-      max-width: none;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 0;
-    }
-    @media (max-width: 640px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .gallery-grid figure {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
-    .gallery-grid img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      display: block;
-      border-radius: 2px;
-    }
-    .gallery-grid figcaption {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 8px;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.02em;
-    }
-
     /* -------- Highlights (photo gallery) -------- */
     .highlights-grid {
       display: grid;
@@ -345,6 +310,13 @@
       color: var(--ink);
       font-size: 17px;
       line-height: 1.2;
+    }
+    .highlights-grid figcaption .speaker a {
+      color: inherit;
+      border-bottom: 1px solid transparent;
+    }
+    .highlights-grid figcaption .speaker a:hover {
+      border-bottom-color: var(--accent);
     }
     .highlights-grid figcaption .date {
       color: var(--muted);
@@ -561,54 +533,32 @@
     </section>
 
     <section id="moments">
-      <div class="section-head">
-        <div class="label">Moments</div>
-        <h2>Around <em>the room.</em></h2>
-      </div>
-      <div class="about-grid">
-        <div></div>
-        <div class="gallery-body">
-          <div class="gallery-grid">
-            <figure><img src="photos/photo-1.jpg" alt="A PhooD talk in progress at Volen 101" loading="lazy"></figure>
-            <figure><img src="photos/photo-2.jpg" alt="A PhooD talk in progress at Volen 101" loading="lazy"></figure>
-            <figure><img src="photos/photo-3.jpg" alt="A PhooD talk in progress at Volen 101" loading="lazy"></figure>
-            <figure><img src="photos/photo-4.jpg" alt="A PhooD talk in progress at Volen 101" loading="lazy"></figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="highlights">
-      <div class="section-head">
-        <div class="label">Photos</div>
-        <h2>In the room.</h2>
-      </div>
       <div class="highlights-grid">
         <figure>
-          <img src="photos/tim-obiso.jpg" alt="Tim Obiso presenting on mechanistic interpretability, PhooD, March 2026" loading="lazy" />
+          <img src="photos/tim-obiso.jpg" alt="Tim Obiso presenting on mechanistic interpretability" loading="lazy" />
           <figcaption>
-            <span class="speaker">Tim Obiso</span>
+            <span class="speaker"><a href="#talk-2026-03-04">Tim Obiso</a></span>
             <span class="date">March 4, 2026</span>
           </figcaption>
         </figure>
         <figure>
-          <img src="photos/kenneth-lai.jpg" alt="Kenneth Lai presenting on situated multimodal dialogue, PhooD, November 2025" loading="lazy" />
+          <img src="photos/kenneth-lai.jpg" alt="Kenneth Lai presenting on situated multimodal dialogue" loading="lazy" />
           <figcaption>
-            <span class="speaker">Kenneth Lai</span>
+            <span class="speaker"><a href="#talk-2025-11-12">Kenneth Lai</a></span>
             <span class="date">November 12, 2025</span>
           </figcaption>
         </figure>
         <figure>
-          <img src="photos/jin-zhao.jpg" alt="Jin Zhao presenting on contrastive framing in news narratives, PhooD, October 2025" loading="lazy" />
+          <img src="photos/jin-zhao.jpg" alt="Jin Zhao presenting on contrastive framing in news narratives" loading="lazy" />
           <figcaption>
-            <span class="speaker">Jin Zhao</span>
+            <span class="speaker"><a href="#talk-2025-10-22">Jin Zhao</a></span>
             <span class="date">October 22, 2025</span>
           </figcaption>
         </figure>
         <figure>
-          <img src="photos/xinyi-ni.jpg" alt="Xinyi Ni reflecting on the PhD journey, PhooD, May 2025" loading="lazy" />
+          <img src="photos/xinyi-ni.jpg" alt="Xinyi Ni reflecting on the PhD journey" loading="lazy" />
           <figcaption>
-            <span class="speaker">Xinyi Ni</span>
+            <span class="speaker"><a href="#talk-2025-05-07">Xinyi Ni</a></span>
             <span class="date">May 7, 2025</span>
           </figcaption>
         </figure>
@@ -856,7 +806,7 @@
         const abstractTag = e.abstract ? `<span class="abstract">${e.abstract}</span>` : "";
         const att = e.attendance ? `${e.attendance} attended` : "";
         return `
-          <li class="archive-item">
+          <li id="talk-${e.date}" class="archive-item">
             <span class="num">${num}</span>
             <span class="date">${fmtDate(e.date)}</span>
             <span class="title">${e.speaker}${titleTag}${abstractTag}</span>
@@ -883,10 +833,24 @@
       });
     }
 
+    function setupPhotoLinks() {
+      // When a photo caption link is clicked, reset the archive filter to "All"
+      // so the target archive entry is visible when the browser scrolls to it.
+      document.querySelectorAll('.highlights-grid a[href^="#talk-"]').forEach(link => {
+        link.addEventListener("click", () => {
+          const allBtn = document.querySelector('.filter button[data-year="all"]');
+          if (allBtn && !allBtn.classList.contains("active")) {
+            allBtn.click();
+          }
+        });
+      });
+    }
+
     document.getElementById("year").textContent = new Date().getFullYear();
     renderStats();
     renderArchive();
     setupFilters();
+    setupPhotoLinks();
   </script>
 </body>
 </html>
